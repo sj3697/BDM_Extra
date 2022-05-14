@@ -41,7 +41,7 @@ def main(sc,sqlcontext):
                 for i in range(temp[key]):
                   yield k, dis*temp[key]
                   
-      output2_2019_03 = sc.textFile('weekly-patterns-nyc-2019-2020-sample.csv') \
+      output2_2019_03 = sc.textFile('/tmp/bdm/weekly-patterns-nyc-2019-2020') \
               .mapPartitionsWithIndex(readPatterns_2)
       
       deptColumns = ["cbg","dis"]
