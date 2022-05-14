@@ -46,8 +46,8 @@ def main(sc,sqlcontext):
       
       deptColumns = ["cbg","dis"]
       df2_2019_03 = output2_2019_03.toDF(deptColumns)
-      med = f.expr('percentile_approx(dis,0.5)')
-      df2_2019_03 = df2_2019_03.groupBy('cbg').agg(med.alias('2019_03'))
+##      med = f.expr('percentile_approx(dis,0.5)')
+##      df2_2019_03 = df2_2019_03.groupBy('cbg').agg(med.alias('2019_03'))
 
       
       df2_2019_03.write.option("header", True).csv(sys.argv[1])
