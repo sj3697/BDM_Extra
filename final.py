@@ -41,17 +41,17 @@ def main(sc,sqlcontext):
                 for i in range(temp[key]):
                   yield k, dis*temp[key]
                   
-      output2_2019_03 = sc.textFile('/tmp/bdm/weekly-patterns-nyc-2019-2020') \
+    output2_2019_03 = sc.textFile('/tmp/bdm/weekly-patterns-nyc-2019-2020') \
               .mapPartitionsWithIndex(readPatterns_2)
-      
-##      deptColumns = ["cbg","dis"]
-##      df2_2019_03 = output2_2019_03.toDF(deptColumns)
-##      med = f.expr('percentile_approx(dis,0.5)')
-##      df2_2019_03 = df2_2019_03.groupBy('cbg').agg(med.alias('2019_03'))
+
+    deptColumns = ["cbg","dis"]
+    df2_2019_03 = output2_2019_03.toDF(deptColumns)
+    med = f.expr('percentile_approx(dis,0.5)')
+    df2_2019_03 = df2_2019_03.groupBy('cbg').agg(med.alias('2019_03'))
 
       
-      #df2_2019_03.write.option("header", True).csv(sys.argv[1])
-      output2_2019_03.saveAsTextFile('extra')
+    df2_2019_03.write.option("header", True).csv(sys.argv[1])
+    #output2_2019_03.saveAsTextFile('extra')
       
 if __name__ == '__main__':
   sc = SparkContext()
