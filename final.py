@@ -16,7 +16,7 @@ from shapely.geometry import Point
 
 
 
-def main(sc):
+def main(sc,sqlcontext):
     df = pd.read_csv('nyc_cbg_centroids.csv')
     outputCBG = df.set_index('cbg_fips').T.to_dict('list')
     
