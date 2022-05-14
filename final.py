@@ -118,7 +118,7 @@ def main(sc,sqlcontext):
     df2_2020_10 = output2_2020_10.toDF(deptColumns)
     med = f.expr('percentile_approx(dis,0.5)')
     df2_2020_10 = df2_2020_10.groupBy('cbg').agg(med.alias('2020_10'))
-    final = final.join(df2_2020_03, on = 'cbg', how = 'full').cache()
+    final = final.join(df2_2020_10, on = 'cbg', how = 'full').cache()
 
     final = final.orderBy('cbg', ascending=True)
     
