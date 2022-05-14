@@ -50,7 +50,7 @@ def main(sc,sqlcontext):
       df2_2019_03 = df2_2019_03.groupBy('cbg').agg(med.alias('2019_03')).cache()
 
       
-      final.write.format("csv").option("header", "true").save(sys.argv[1])
+      df2_2019_03.write.format("csv").option("header", "true").save(sys.argv[1])
 if __name__ == '__main__':
   sc = SparkContext()
   sqlcontext=SQLContext(sc)
